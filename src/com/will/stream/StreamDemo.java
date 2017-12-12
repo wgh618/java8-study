@@ -1,16 +1,25 @@
-package com.will.Stream;
+package com.will.stream;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-//http://www.importnew.com/11908.html#streams
-//http://blog.csdn.net/haiyoung/article/details/52693212
+/**
+ * ClassName:StreamDemo
+ * Description:Jdk8新特性-stream API
+ *
+ * @Author Will Wu
+ * @Email willwu618@gmail.com
+ * @Date 2017-12-12
+ */
 public class StreamDemo {
     public static void main(String[] args) {
         /**
-         * -*- Intermiate方法 -*-
-         *filter过滤,接收一个Predicate
+         * Intermiate方法
+         * filter过滤,接收一个Predicate
          * map将每一个元素进行 1<->1 映射并返回新元素（可以返回不同的类型），接收一个Function
          * flatmap,将一个元素进行1 -> *映射，多端结果用一个Stream保存
          * peek获得每一个元素，不能改变元素，接收一个Consumer
@@ -36,7 +45,11 @@ public class StreamDemo {
          **/
         Stream<String> stringStream = Stream.of("a", "b", "c", "a");
         //此时由于都是Intermediate操作所以并不执行，所以peek操作不会打印
-        Stream<Integer> ins = stringStream.filter(x -> x != null).map(x -> x.hashCode()).distinct().peek(x -> System.out.println(x));
+        Stream<Integer> ins = stringStream.
+                filter(x -> x != null)
+                .map(x -> x.hashCode())
+                .distinct()
+                .peek(x -> System.out.println(x));
         //此时调用了一个terminal方法，所以前面的Intermediate操作也被执行，所以peek打印hash值
         //anyMatch有skip功能，所以上面的peek不是打印全部元素。
         ins.anyMatch(x -> x == 98);
@@ -71,9 +84,10 @@ public class StreamDemo {
     }
 }
 
-class Person{
+class Person {
     private int age;
     private String name;
+
     public int getAge() {
         return age;
     }
@@ -91,9 +105,19 @@ class Person{
         this.age = age;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
-class PersonSupplier implements Supplier<Person>{
+
+class PersonSupplier implements Supplier<Person> {
     private Random random = new Random();
+
     @Override
     public Person get() {
         Person p = new Person();
