@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * ClassName:StreamDemo2
  * Description:Stream API基本操作
+ *
  * @Author Will Wu
  * @Email willwu618@gmail.com
  * @Date 2017-12-13
@@ -31,6 +32,7 @@ public class StreamDemo3 {
      */
     public static void filter() {
         stringList.stream().filter(e -> e.startWith("a")).forEach(System.out::println);
+        System.out.println(stringList);
     }
 
     /**
@@ -39,6 +41,55 @@ public class StreamDemo3 {
      */
     public static void sort() {
         stringList.stream().sorted().filter(e -> e.startWith("a")).forEach(System.out::println);
+        System.out.println(stringList);
+    }
+
+    /**
+     * Map映射:中间操作map会将元素根据指定的Function接口来依次将元素转成另外的对象
+     * 将字符串转换为大写字符串，并逆序排序
+     */
+    public static void map() {
+        stringList.stream().sorted().filter(e -> e.startWith("a")).forEach(System.out::println);
+        System.out.println(stringList);
+    }
+
+    /**
+     * Match匹配:Stream提供了多种匹配操作，允许检测指定的Predicate是否匹配整个Stream。
+     * 所有的匹配操作都是最终操作，并返回一个boolean类型的值。
+     */
+    public static void match() {
+        boolean anyStartsWithA = stringList
+                .stream()
+                .anyMatch((s) -> s.startsWith("a"));
+        // true
+        System.out.println(anyStartsWithA);
+
+        boolean allStartsWithA = stringList
+                        .stream()
+                        .allMatch((s) -> s.startsWith("a"));
+        // false
+        System.out.println(allStartsWithA);
+
+        boolean noneStartsWithZ = stringList
+                        .stream()
+                        .noneMatch((s) -> s.startsWith("z"));
+        // true
+        System.out.println(noneStartsWithZ);
+
+        System.out.println(stringList);
+    }
+
+    /**
+     * Count计数:计数是一个最终操作，返回Stream中元素的个数，返回值类型是long。
+     */
+    public static void count() {
+        long startsWithB = stringList
+                        .stream()
+                        .filter((s) -> s.startsWith("b"))
+                        .count();
+        // 3
+        System.out.println(startsWithB);
+
         System.out.println(stringList);
     }
 
