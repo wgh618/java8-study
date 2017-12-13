@@ -122,10 +122,10 @@ public class DateTime {
         Clock clock = Clock.systemDefaultZone();
         // Get the local date/time
         final LocalDateTime datetime = LocalDateTime.now();
-        final LocalDateTime datetimeFromClock = LocalDateTime.now( clock );
+        final LocalDateTime datetimeFromClock = LocalDateTime.now(clock);
 
-        System.out.println( datetime );
-        System.out.println( datetimeFromClock );
+        System.out.println(datetime);
+        System.out.println(datetimeFromClock);
 
         LocalDateTime sylvester = LocalDateTime.of(2014, Month.DECEMBER, 31, 23, 59, 59);
         DayOfWeek dayOfWeek1 = sylvester.getDayOfWeek();
@@ -177,8 +177,8 @@ public class DateTime {
 //        timeZones();
 //        localTime();
 //        localDate();
-//        localDateTime();
-        duration();
+        localDateTime();
+//        duration();
     }
 
 }
