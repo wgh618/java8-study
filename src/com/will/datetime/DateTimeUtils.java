@@ -10,19 +10,19 @@ import java.time.temporal.TemporalUnit;
 import java.util.Date;
 
 /**
- * ClassName:TimeUtils
+ * ClassName:DateTimeUtils
  * Description:基于JDK8 time包的时间工具类
  * @Author Will Wu
  * @Email willwu618@gmail.com
  * @Date 2017-12-13
  */
-public final class TimeUtils {
+public final class DateTimeUtils {
     /**
      * 获取默认时间格式: yyyy-MM-dd HH:mm:ss
      */
     private static final DateTimeFormatter DEFAULT_DATETIME_FORMATTER = TimeFormat.LONG_DATE_PATTERN_LINE.formatter;
 
-    private TimeUtils() {
+    private DateTimeUtils() {
         // no construct function
     }
 
@@ -37,7 +37,7 @@ public final class TimeUtils {
     }
 
     /**
-     * 获取当前时间的指定格式
+     * 获取指定格式的当前时间
      * @param pattern
      * @return
      */
@@ -46,7 +46,7 @@ public final class TimeUtils {
     }
 
     /**
-     * String 转时间
+     * 将输入字符串转换为LocalDateTime
      * @param timeStr = "yyyy-MM-dd HH:mm:ss"
      * @return
      */
@@ -55,7 +55,7 @@ public final class TimeUtils {
     }
 
     /**
-     * String 转时间
+     * 将输入时间字符串以指定形式返回LocalDateTime
      * @param timeStr
      * @param format  时间格式
      * @return
@@ -74,7 +74,7 @@ public final class TimeUtils {
     }
 
     /**
-     * 时间转 String
+     * 将输入时间以指定形式返回
      * @param time
      * @param format 时间格式
      * @return
