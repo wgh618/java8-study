@@ -5,8 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * ClassName:DateTime
@@ -177,8 +176,31 @@ public class DateTime {
 //        timeZones();
 //        localTime();
 //        localDate();
-        localDateTime();
+//        localDateTime();
 //        duration();
+            String string = "abcdeaabbbdeeaabdbbe";
+            Map<Character,Integer> map = new HashMap<>();
+            char[] chars = string.toCharArray();
+            for (char aChar : chars) {
+                boolean b = map.containsKey(aChar);
+                if (b) {
+                    map.put(aChar, map.get(aChar) + 1);
+                } else {
+                    map.put(aChar, 1);
+                }
+            }
+            System.out.println(map);
+        Set<Map.Entry<Character, Integer>> entries = map.entrySet();
+        List<Map.Entry<Character, Integer>> list = new ArrayList<>(entries);
+        Collections.sort(list, new Comparator<Map.Entry<Character, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        for (Map.Entry<Character, Integer> characterIntegerEntry : list) {
+            System.out.println(characterIntegerEntry);
+        }
     }
 
 }

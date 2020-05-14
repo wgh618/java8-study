@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * ClassName:StreamDemo2
@@ -147,13 +149,19 @@ public class StreamDemo3 {
         System.out.println(String.format("parallel sort took: %d ms", millis));
     }
 
+    public static void sss(Function<String, String> supplier) {
+        System.out.println(supplier.apply("2423432"));
+    }
+
     public static void main(String[] args) {
-        filter();
+        /*filter();
         sort();
         map();
         match();
         count();
         reduce();
-        parallel();
+        parallel();*/
+
+        sss(a -> { return a + "wqweq";});
     }
 }
